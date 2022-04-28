@@ -2,12 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stock_v1/views/stock_page.dart';
 
-class LogingScreen extends StatelessWidget {
-  const LogingScreen({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _EmployeeId = TextEditingController();
+  final _Password = TextEditingController();
+  var dbLogin;
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: () => FocusScope.of(context).unfocus(),
+    child: Scaffold(
       backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
@@ -38,16 +48,17 @@ class LogingScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Container(
-                    height: 50,
+                  padding: const EdgeInsets.symmetric(horizontal: 17.0),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height / 15,
                     child: TextFormField(
                       decoration: const InputDecoration(
                         // floatingLabelBehavior: FloatingLabelBehavior.always,
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        )),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5),
+                          ),
+                        ),
                         labelText: 'รหัสพนักงาน',
                       ),
                     ),
@@ -55,28 +66,29 @@ class LogingScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Container(
-                    height: 50,
+                  padding: const EdgeInsets.symmetric(horizontal: 17.0),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height / 15,
                     child: TextFormField(
                       decoration: const InputDecoration(
                         // floatingLabelBehavior: FloatingLabelBehavior.always,
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        )),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5),
+                          ),
+                        ),
                         labelText: 'รหัสผ่าน',
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 17.0),
                   child: Container(
-                    padding: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 150, 66, 131),
+                      color: const Color.fromARGB(255, 150, 66, 131),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: InkWell(
@@ -86,7 +98,7 @@ class LogingScreen extends StatelessWidget {
                             builder: (context) => StockPage(),
                           ),
                         );
-                        print('StockHome');
+                        print('sign in');
                       },
                       child: Center(
                         child: Text(
@@ -105,6 +117,6 @@ class LogingScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
